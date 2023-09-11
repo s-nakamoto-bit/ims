@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+	<title th:text="${title}"></title>
+</head>
+
+<body class="container">
+	<span>ID：XXXXXXXX</span>
+	<span id="view_time"></span>
+
+	<script type="text/javascript">
+		document.getElementById("view_time").innerHTML = getNow();
+
+		function getNow() {
+			var now = new Date();
+			var year = now.getFullYear();
+			var mon = now.getMonth() + 1; //１を足すこと
+			var day = now.getDate();
+			var hour = now.getHours();
+			var min = now.getMinutes();
+
+			//出力用
+			var s = "期日-時間：" + year + "/" + mon + "/" + day + " /" + hour + ":" + min;
+			return s;
+		}
+	</script>
+
+	<h1 th:text="${title}"></h1>
+
+	<table>
+		<form action="#" method="post" th:action="@{/}" th:object="${inventoryForm}">
+
+			<tr>
+				<th>
+					<lavel for="branch_code">支店コード</lavel>
+				</th>
+				<td><input id="branch_code" type="text" name="branch_code" th:value="*{branch_code}"></td>
+				<th>
+					<lavel for="branch_name">支店名</lavel>
+				</th>
+				<td th:text="*{branch_name}"></td>
+			</tr>
+			<tr>
+				<th>
+					<lavel for="person_code">担当者コード</lavel>
+				</th>
+				<td><input id="person_code" type="text" name="person_code" th:value="*{person_code}"></td>
+				<th>
+					<lavel for="person_name">担当者名</lavel>
+				</th>
+				<td th:text="*{person_name}"></td>
+			</tr>
+			<tr>
+				<th>
+					<lavel for="dept_code">部門コード</lavel>
+				</th>
+				<td><input id="dept_code" type="text" name="dept_code" th:value="*{dept_code}"></td>
+				<th>
+					<lavel for="dept_name">部門名</lavel>
+				</th>
+				<td th:text="*{dept_name}"></td>
+			</tr>
+			<tr>
+				<th>
+					<lavel for="class_code">クラスコード</lavel>
+				</th>
+				<td><input id="class_code" type="text" name="class_code" th:value="*{class_code}"></td>
+				<th>
+					<lavel for="class_name">クラス名</lavel>
+				</th>
+				<td th:text="*{class_name}"></td>
+			</tr>
+			<tr>
+				<div th:if="${#fields.hasErrors('branch_code')}" th:errors="*{branch_code}"></div>
+				<div th:if="${#fields.hasErrors('person_code')}" th:errors="*{person_code}"></div>
+				<div th:if="${#fields.hasErrors('dept_code')}" th:errors="*{dept_code}"></div>
+				<div th:if="${#fields.hasErrors('class_code')}" th:errors="*{class_code}"></div>
+			</tr>
+
+			<input type="submit" value="検索">
+		</form>
+	</table>
+	<th:block th:if="${inventoryList}!=null">
+		<table>
+			<tr>
+				<th rowspan="2">NO</th>
+				<th colspan="3">商品情報</th>
+				<th colspan="2">在庫</th>
+				<th colspan="2">売上数量</th>
+				<th colspan="2">仕入数量</th>
+			</tr>
+			<tr>
+				<th>コード</th>
+				<th>名称</th>
+				<th>仕入単価</th>
+				<th>数量</th>
+				<th>評価額</th>
+				<th>直近Week</th>
+				<th>直近Mon</th>
+				<th>直近Week</th>
+				<th>直近Mon</th>
+			</tr>
+			<tr th:each="inventory : ${inventoryList}">
+				<td th:text="${inventory.product_code}"></td>
+				<td th:text="${inventory.procuct_name}"></td>
+				<td th:text="${inventory.unit_price}"></td>
+				<td th:text="${inventory.inventory_quantity}"></td>
+				<td th:text="${inventory.valuation_value}"></td>
+				<td th:text="${inventory.arrival_quantity_week}"></td>
+				<td th:text="${inventory.arrival_quantity_mon}"></td>
+				<td th:text="${inventory.salse_quantity_week}"></td>
+				<td th:text="${inventory.salse_quantity_mon}"></td>
+			</tr>
+		</table>
+	</th:block>
+</body>
+
+</html>
