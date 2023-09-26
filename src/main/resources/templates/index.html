@@ -7,11 +7,11 @@
 	<!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
+	<link th:href="@{/css/style.css}" rel="stylesheet">
 	<title th:text="${title}"></title>
 </head>
 
-<body class="container">
+<body>
 	<span>ID：XXXXXXXX</span>
 	<span id="view_time"></span>
 
@@ -32,61 +32,48 @@
 		}
 	</script>
 
-	<h1 th:text="${title}"></h1>
+	<h4 th:text="${title}"></h4>
 
-	<table>
-		<form action="#" method="post" th:action="@{/}" th:object="${inventoryForm}">
-
-			<tr>
-				<th>
-					<lavel for="branch_code">支店コード</lavel>
-				</th>
-				<td><input id="branch_code" type="text" name="branch_code" th:value="*{branch_code}"></td>
-				<th>
-					<lavel for="branch_name">支店名</lavel>
-				</th>
-				<td th:text="*{branch_name}"></td>
-			</tr>
-			<tr>
-				<th>
-					<lavel for="person_code">担当者コード</lavel>
-				</th>
-				<td><input id="person_code" type="text" name="person_code" th:value="*{person_code}"></td>
-				<th>
-					<lavel for="person_name">担当者名</lavel>
-				</th>
-				<td th:text="*{person_name}"></td>
-			</tr>
-			<tr>
-				<th>
-					<lavel for="dept_code">部門コード</lavel>
-				</th>
-				<td><input id="dept_code" type="text" name="dept_code" th:value="*{dept_code}"></td>
-				<th>
-					<lavel for="dept_name">部門名</lavel>
-				</th>
-				<td th:text="*{dept_name}"></td>
-			</tr>
-			<tr>
-				<th>
-					<lavel for="class_code">クラスコード</lavel>
-				</th>
-				<td><input id="class_code" type="text" name="class_code" th:value="*{class_code}"></td>
-				<th>
-					<lavel for="class_name">クラス名</lavel>
-				</th>
-				<td th:text="*{class_name}"></td>
-			</tr>
-			<tr>
+	<form action="#" method="post" th:action="@{/}" th:object="${inventoryForm}">
+		<ul>
+			<li>
+				<label class="form_code" for="branch_code">支店コード</label>
+				<input id="branch_code" type="text" name="branch_code" th:value="*{branch_code}">
+				<label for="branch_name">支店名</label>
+				<span th:text="*{branch_name}"></span>
+			</li>
+			<li>
+				<label class="form_code" for="person_code">担当者コード</label>
+				<input id="person_code" type="text" name="person_code" th:value="*{person_code}">
+				<label for="person_name">担当者名</label>
+				<span th:text="*{person_name}"></span>
+			</li>
+			<li>
+				<label class="form_code" for="dept_code">部門コード</label>
+				<input id="dept_code" type="text" name="dept_code" th:value="*{dept_code}">
+				<label for="dept_name">部門名</label>
+				<span th:text="*{dept_name}"></span>
+			</li>
+			<li>
+				<label class="form_code" for="class_code">クラスコード</label>
+				<input id="class_code" type="text" name="class_code" th:value="*{class_code}">
+				<label for="class_name">クラス名</label>
+				<span th:text="*{class_name}"></span>
+			</li>
+			<li>
 				<div th:if="${#fields.hasErrors('branch_code')}" th:errors="*{branch_code}"></div>
 				<div th:if="${#fields.hasErrors('person_code')}" th:errors="*{person_code}"></div>
 				<div th:if="${#fields.hasErrors('dept_code')}" th:errors="*{dept_code}"></div>
 				<div th:if="${#fields.hasErrors('class_code')}" th:errors="*{class_code}"></div>
-			</tr>
+			</li>
+		</ul>
 
-			<input type="submit" value="検索">
-		</form>
-	</table>
+		<input type="submit" value="検索1">
+		<input type="submit" value="検索2">
+		<input type="submit" value="検索3">
+		<input type="submit" value="検索4">
+		<input type="submit" value="検索5">
+	</form>
 	<th:block th:if="${inventoryList}!=null">
 		<table>
 			<tr>

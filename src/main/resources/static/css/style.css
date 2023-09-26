@@ -1,0 +1,22 @@
+body {
+	margin: 0px 150px 0px;
+	font-size: x-large;
+}
+
+ul {
+	padding: 0;
+}
+
+ul li {
+	list-style: none;
+	margin-bottom: 15px;
+}
+
+label {
+	font-weight: bold;
+	width: 170px;
+}
+
+ul li input {
+	margin-right: 100px;
+}
