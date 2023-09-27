@@ -1,7 +1,25 @@
 body {
 	margin: 0px 150px 0px;
-	font-size: x-large;
+	font-size: large;
 }
+
+/*---２つのブロック要素を左右に寄せる---*/
+
+div {
+	display: flex;
+	margin-bottom: 15px;
+}
+
+.div_left {
+	flex-grow: 1;
+}
+
+.div_right {
+	flex-grow: 1;
+	text-align: right;
+}
+
+/*---form整列---*/
 
 ul {
 	padding: 0;
@@ -12,11 +30,19 @@ ul li {
 	margin-bottom: 15px;
 }
 
-label {
+ul li label {
 	font-weight: bold;
 	width: 170px;
 }
 
 ul li input {
 	margin-right: 100px;
+	text-align: right;
+	padding-right: 5px;
+}
+
+/*---tableヘッダー中央寄せ---*/
+th {
+	text-align: center;
+	vertical-align: middle;
 }

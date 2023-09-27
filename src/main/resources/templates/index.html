@@ -12,101 +12,106 @@
 </head>
 
 <body>
-	<span>ID：XXXXXXXX</span>
-	<span id="view_time"></span>
+	<div>
+		<span class="div_left">ID：XXXXXXXX</span>
 
-	<script type="text/javascript">
-		document.getElementById("view_time").innerHTML = getNow();
-
-		function getNow() {
-			var now = new Date();
-			var year = now.getFullYear();
-			var mon = now.getMonth() + 1; //１を足すこと
-			var day = now.getDate();
-			var hour = now.getHours();
-			var min = now.getMinutes();
-
-			//出力用
-			var s = "期日-時間：" + year + "/" + mon + "/" + day + " /" + hour + ":" + min;
-			return s;
-		}
-	</script>
+		<span id="view_time" class="div_right"></span>
+		<script type="text/javascript" src="js/script.js"></script>
+	</div>
 
 	<h4 th:text="${title}"></h4>
 
 	<form action="#" method="post" th:action="@{/}" th:object="${inventoryForm}">
 		<ul>
 			<li>
-				<label class="form_code" for="branch_code">支店コード</label>
-				<input id="branch_code" type="text" name="branch_code" th:value="*{branch_code}">
+				<label for="branch_code">支店コード</label>
+				<input id="branch_code" type="text" name="branch_code" th:value="*{branch_code}" placeholder="00000">
 				<label for="branch_name">支店名</label>
 				<span th:text="*{branch_name}"></span>
 			</li>
 			<li>
-				<label class="form_code" for="person_code">担当者コード</label>
-				<input id="person_code" type="text" name="person_code" th:value="*{person_code}">
+				<label for="person_code">担当者コード</label>
+				<input id="person_code" type="text" name="person_code" th:value="*{person_code}" placeholder="00000">
 				<label for="person_name">担当者名</label>
 				<span th:text="*{person_name}"></span>
 			</li>
 			<li>
-				<label class="form_code" for="dept_code">部門コード</label>
-				<input id="dept_code" type="text" name="dept_code" th:value="*{dept_code}">
+				<label for="dept_code">部門コード</label>
+				<input id="dept_code" type="text" name="dept_code" th:value="*{dept_code}" placeholder="00000">
 				<label for="dept_name">部門名</label>
 				<span th:text="*{dept_name}"></span>
 			</li>
 			<li>
-				<label class="form_code" for="class_code">クラスコード</label>
-				<input id="class_code" type="text" name="class_code" th:value="*{class_code}">
+				<label for="class_code">クラスコード</label>
+				<input id="class_code" type="text" name="class_code" th:value="*{class_code}" placeholder="00000">
 				<label for="class_name">クラス名</label>
 				<span th:text="*{class_name}"></span>
 			</li>
-			<li>
-				<div th:if="${#fields.hasErrors('branch_code')}" th:errors="*{branch_code}"></div>
-				<div th:if="${#fields.hasErrors('person_code')}" th:errors="*{person_code}"></div>
-				<div th:if="${#fields.hasErrors('dept_code')}" th:errors="*{dept_code}"></div>
-				<div th:if="${#fields.hasErrors('class_code')}" th:errors="*{class_code}"></div>
-			</li>
 		</ul>
-
-		<input type="submit" value="検索1">
-		<input type="submit" value="検索2">
-		<input type="submit" value="検索3">
-		<input type="submit" value="検索4">
-		<input type="submit" value="検索5">
+		<div>
+			<span class="div_left">
+				<span th:if="${#fields.hasErrors('branch_code')}" th:errors="*{branch_code}"></span>
+				<span th:if="${#fields.hasErrors('person_code')}" th:errors="*{person_code}"></span>
+				<span th:if="${#fields.hasErrors('dept_code')}" th:errors="*{dept_code}"></span>
+				<span th:if="${#fields.hasErrors('class_code')}" th:errors="*{class_code}"></span>
+			</span>
+			<span class="div_right">
+				<input type="submit" value="検索">
+<!--				<input type="submit" value="Next担当者">-->
+<!--				<input type="submit" value="Next部門">-->
+<!--				<input type="submit" value="Nextクラス">-->
+<!--				<input type="submit" value="Next">-->
+<!--				<input type="submit" value="Back">-->
+<!--				<input type="submit" value="終了">-->
+			</span>
+		</div>
 	</form>
-	<th:block th:if="${inventoryList}!=null">
-		<table>
-			<tr>
-				<th rowspan="2">NO</th>
-				<th colspan="3">商品情報</th>
-				<th colspan="2">在庫</th>
-				<th colspan="2">売上数量</th>
-				<th colspan="2">仕入数量</th>
-			</tr>
-			<tr>
-				<th>コード</th>
-				<th>名称</th>
-				<th>仕入単価</th>
-				<th>数量</th>
-				<th>評価額</th>
-				<th>直近Week</th>
-				<th>直近Mon</th>
-				<th>直近Week</th>
-				<th>直近Mon</th>
-			</tr>
-			<tr th:each="inventory : ${inventoryList}">
-				<td th:text="${inventory.product_code}"></td>
-				<td th:text="${inventory.procuct_name}"></td>
-				<td th:text="${inventory.unit_price}"></td>
-				<td th:text="${inventory.inventory_quantity}"></td>
-				<td th:text="${inventory.valuation_value}"></td>
-				<td th:text="${inventory.arrival_quantity_week}"></td>
-				<td th:text="${inventory.arrival_quantity_mon}"></td>
-				<td th:text="${inventory.salse_quantity_week}"></td>
-				<td th:text="${inventory.salse_quantity_mon}"></td>
-			</tr>
-		</table>
-	</th:block>
+	<!--	<th:block th:if="${inventoryList}!=null">-->
+	<table class="table table-bordered">
+		<tr>
+			<th rowspan="2">NO</th>
+			<th colspan="3">商品情報</th>
+			<th colspan="2">在庫</th>
+			<th colspan="2">売上数量</th>
+			<th colspan="2">仕入数量</th>
+		</tr>
+		<tr>
+			<th>コード</th>
+			<th>名称</th>
+			<th>仕入単価</th>
+			<th>数量</th>
+			<th>評価額</th>
+			<th>直近Week</th>
+			<th>直近Mon</th>
+			<th>直近Week</th>
+			<th>直近Mon</th>
+		</tr>
+		<tr th:each="inventory, inventoryStat : ${inventoryList}">
+			<td th:text="${inventoryStat.count}"></td>
+			<td th:text="${inventory.product_code}"></td>
+			<td th:text="${inventory.procuct_name}"></td>
+			<td th:text="${inventory.unit_price}"></td>
+			<td th:text="${inventory.inventory_quantity}"></td>
+			<td th:text="${inventory.valuation_value}"></td>
+			<td th:text="${inventory.arrival_quantity_week}"></td>
+			<td th:text="${inventory.arrival_quantity_mon}"></td>
+			<td th:text="${inventory.salse_quantity_week}"></td>
+			<td th:text="${inventory.salse_quantity_mon}"></td>
+		</tr>
+<!--		<tr>-->
+<!--			<td>10</td>-->
+<!--			<td>1234567890123</td>-->
+<!--			<td>あいうえおかきくけこさしすせそたちつてと</td>-->
+<!--			<td>9,999,999</td>-->
+<!--			<td>9,999</td>-->
+<!--			<td>99,989,990,001</td>-->
+<!--			<td>9,999</td>-->
+<!--			<td>9,999</td>-->
+<!--			<td>9,999</td>-->
+<!--			<td>9,999</td>-->
+<!--		</tr>-->
+	</table>
+	<!--	</th:block>-->
 </body>
 
 </html>

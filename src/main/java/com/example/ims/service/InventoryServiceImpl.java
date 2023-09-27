@@ -2,7 +2,6 @@ package com.example.ims.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.ims.entity.Inventory;
@@ -14,7 +13,6 @@ public class InventoryServiceImpl implements InventoryService {
 
 	private final InventoryRepository repo;
 
-	@Autowired
 	public InventoryServiceImpl(InventoryRepository repo) {
 		this.repo = repo;
 	}
@@ -27,16 +25,16 @@ public class InventoryServiceImpl implements InventoryService {
 	@Override
 	public InventoryForm searchName(InventoryForm inventoryForm) {
 		if (!(inventoryForm.getBranch_code().equals(""))) {
-			inventoryForm.setBranch_name(repo.searchBranch(inventoryForm.getBranch_code()));
+			inventoryForm.setBranch_name(repo.searchBranchName(inventoryForm.getBranch_code()));
 		}
 		if (!(inventoryForm.getPerson_code().equals(""))) {
-			inventoryForm.setPerson_name(repo.searchPerson(inventoryForm.getPerson_code()));
+			inventoryForm.setPerson_name(repo.searchPersonName(inventoryForm.getPerson_code()));
 		}
 		if (!(inventoryForm.getDept_code().equals(""))) {
-			inventoryForm.setDept_name(repo.searchDept(inventoryForm.getDept_code()));
+			inventoryForm.setDept_name(repo.searchDeptName(inventoryForm.getDept_code()));
 		}
 		if (!(inventoryForm.getClass_code().equals(""))) {
-			inventoryForm.setClass_name(repo.searchClass(inventoryForm.getClass_code()));
+			inventoryForm.setClass_name(repo.searchClassName(inventoryForm.getClass_code()));
 		}
 
 		return inventoryForm;
