@@ -7,14 +7,14 @@ import com.example.ims.entity.InventoryForm;
 
 public interface InventoryRepository {
 
-	String searchBranchName(String branch_code);
+	String selectBranchName(String branch_code);
 
-	String searchPersonName(String person_code);
+	String selectPersonName(String person_code);
 
-	String searchDeptName(String dept_code);
+	String selectDeptName(String dept_code);
 
-	String searchClassName(String class_code);
+	String selectClassName(String class_code);
 
-	List<Inventory> searchAll(InventoryForm inventoryForm);
+	List<Inventory> selectAll(InventoryForm inventoryForm);
 
 }

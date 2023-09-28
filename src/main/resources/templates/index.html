@@ -24,28 +24,24 @@
 	<form action="#" method="post" th:action="@{/}" th:object="${inventoryForm}">
 		<ul>
 			<li>
-				<label for="branch_code">支店コード</label>
-				<input id="branch_code" type="text" name="branch_code" th:value="*{branch_code}" placeholder="00000">
-				<label for="branch_name">支店名</label>
-				<span th:text="*{branch_name}"></span>
+				<label for="branch_code" class="required">支店コード</label>
+				<input id="branch_code" type="text" name="branch_code" th:value="*{branch_code}" placeholder="00000" maxlength="5">
+				<label>支店名</label><span th:text="*{branch_name}"></span>
 			</li>
 			<li>
-				<label for="person_code">担当者コード</label>
-				<input id="person_code" type="text" name="person_code" th:value="*{person_code}" placeholder="00000">
-				<label for="person_name">担当者名</label>
-				<span th:text="*{person_name}"></span>
+				<label for="person_code" class="required">担当者コード</label>
+				<input id="person_code" type="text" name="person_code" th:value="*{person_code}" placeholder="00000" maxlength="5">
+				<label>担当者名</label><span th:text="*{person_name}"></span>
 			</li>
 			<li>
 				<label for="dept_code">部門コード</label>
-				<input id="dept_code" type="text" name="dept_code" th:value="*{dept_code}" placeholder="00000">
-				<label for="dept_name">部門名</label>
-				<span th:text="*{dept_name}"></span>
+				<input id="dept_code" type="text" name="dept_code" th:value="*{dept_code}" placeholder="00000" maxlength="5">
+				<label>部門名</label><span th:text="*{dept_name}"></span>
 			</li>
 			<li>
 				<label for="class_code">クラスコード</label>
-				<input id="class_code" type="text" name="class_code" th:value="*{class_code}" placeholder="00000">
-				<label for="class_name">クラス名</label>
-				<span th:text="*{class_name}"></span>
+				<input id="class_code" type="text" name="class_code" th:value="*{class_code}" placeholder="00000" maxlength="5">
+				<label>クラス名</label><span th:text="*{class_name}"></span>
 			</li>
 		</ul>
 		<div>
@@ -57,12 +53,12 @@
 			</span>
 			<span class="div_right">
 				<input type="submit" value="検索">
-<!--				<input type="submit" value="Next担当者">-->
-<!--				<input type="submit" value="Next部門">-->
-<!--				<input type="submit" value="Nextクラス">-->
-<!--				<input type="submit" value="Next">-->
-<!--				<input type="submit" value="Back">-->
-<!--				<input type="submit" value="終了">-->
+				<!--				<input type="submit" value="Next担当者">-->
+				<!--				<input type="submit" value="Next部門">-->
+				<!--				<input type="submit" value="Nextクラス">-->
+				<!--				<input type="submit" value="Next">-->
+				<!--				<input type="submit" value="Back">-->
+				<!--				<input type="submit" value="終了">-->
 			</span>
 		</div>
 	</form>
@@ -98,18 +94,18 @@
 			<td th:text="${inventory.salse_quantity_week}"></td>
 			<td th:text="${inventory.salse_quantity_mon}"></td>
 		</tr>
-<!--		<tr>-->
-<!--			<td>10</td>-->
-<!--			<td>1234567890123</td>-->
-<!--			<td>あいうえおかきくけこさしすせそたちつてと</td>-->
-<!--			<td>9,999,999</td>-->
-<!--			<td>9,999</td>-->
-<!--			<td>99,989,990,001</td>-->
-<!--			<td>9,999</td>-->
-<!--			<td>9,999</td>-->
-<!--			<td>9,999</td>-->
-<!--			<td>9,999</td>-->
-<!--		</tr>-->
+		<!--		<tr>-->
+		<!--			<td>10</td>-->
+		<!--			<td>1234567890123</td>-->
+		<!--			<td>あいうえおかきくけこさしすせそたちつてと</td>-->
+		<!--			<td>9,999,999</td>-->
+		<!--			<td>9,999</td>-->
+		<!--			<td>99,989,990,001</td>-->
+		<!--			<td>9,999</td>-->
+		<!--			<td>9,999</td>-->
+		<!--			<td>9,999</td>-->
+		<!--			<td>9,999</td>-->
+		<!--		</tr>-->
 	</table>
 	<!--	</th:block>-->
 </body>

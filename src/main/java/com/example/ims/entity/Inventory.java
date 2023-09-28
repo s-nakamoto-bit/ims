@@ -1,8 +1,10 @@
 package com.example.ims.entity;
 
+import jakarta.persistence.Entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
 @NoArgsConstructor
 @Data
 public class Inventory {

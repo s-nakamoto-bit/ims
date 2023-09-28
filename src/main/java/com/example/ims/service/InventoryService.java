@@ -7,8 +7,8 @@ import com.example.ims.entity.InventoryForm;
 
 public interface InventoryService {
 
-	List<Inventory> searchAll(InventoryForm inventoryForm);
-	
 	InventoryForm searchName(InventoryForm inventoryForm);
 
+	List<Inventory> searchAll(InventoryForm inventoryForm);
+	
 }

@@ -19,7 +19,7 @@ div {
 	text-align: right;
 }
 
-/*---form整列---*/
+/*---form---*/
 
 ul {
 	padding: 0;
@@ -33,6 +33,12 @@ ul li {
 ul li label {
 	font-weight: bold;
 	width: 170px;
+}
+
+.required::after {
+  content: " *";
+  color: red;
+  vertical-align: middle;
 }
 
 ul li input {
